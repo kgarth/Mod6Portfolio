@@ -33,18 +33,15 @@ class ShoppingCart:
 	def remove_item(self, ItemToRemove):
 		del self.cart_items[ItemToRemove]
 
-	def modify_item(self, ItemToModify):
-		for pos, item in enumerate(self.cart_items):
-			if item.get_name == ItemToModify.get_name():
-				if item.get_quanity() != ItemToModify.get_quantity():
-					self.item_list[pos].set_quantity(ItemToModify.get_quantity())
-				if item.get_cost() != ItemToModify.get_cost():
-					self.item_list[pos].set_cost(ItemToModify.get_cost())
-				if item.get_description() != ItemToModify.get_description():
-					self.item_list[pos].set_description(ItemToModify.get_description())
-				break
-		else:
-			print('Item not found in cart. Nothing modified.')
+	def modify_item(self, pos, ItemToModify):
+		if self.cart_items[pos].get_quantity() != ItemToModify.get_quantity():
+			self.cart_items[pos].set_quantity(ItemToModify.get_quantity())
+		
+		if self.cart_items[pos].get_cost() != ItemToModify.get_cost():
+			self.cart_items[pos].set_cost(ItemToModify.get_cost())
+
+		if self.cart_items[pos].get_description() != ItemToModify.get_description():
+			self.cart_items[pos].set_description(ItemToModify.get_description())
 
 	def list_items(self):
 		for pos, item in enumerate(self.cart_items):

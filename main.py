@@ -41,7 +41,7 @@ def print_menu():
 
             while True:
                 try:
-                    temp_quantity = int(input('Please enter how many of the product you want to purchase: ')).strip()
+                    temp_quantity = int(input('Please enter how many of the product you want to purchase: ').strip())
 
                     if temp_quantity <= 0:
                         raise ValueError
@@ -76,7 +76,7 @@ def print_menu():
 
             while True:
                 try:
-                    temp = int(input('Enter the number of the item you wish to remove: ')).strip()
+                    temp = int(input('Enter the number of the item you wish to remove: ').strip())
 
                     if 0 > temp > cart.get_num_items_in_cart():
                         raise Exception
@@ -92,7 +92,7 @@ def print_menu():
 
             while True:
                 try:
-                    temp = int(input('Enter the number you wish to change: ')).strip()
+                    temp = int(input('Enter the number you wish to change: ').strip())
 
                     if 0 > temp > cart.get_num_items_in_cart():
                         raise Exception
@@ -102,9 +102,9 @@ def print_menu():
 
             print(f'You chose {temp} - {cart.get_item(temp - 1).get_name()}, what would you like to change?')
             sub_input = ''
-            temp_quantity = 0
-            temp_cost = 0
-            temp_description = ''
+            temp_quantity = cart.get_item(temp - 1).get_quantity()
+            temp_cost = cart.get_item(temp - 1).get_cost()
+            temp_description = cart.get_item(temp - 1).get_description()
 
             while sub_input != 'f':
                 print(f'q - Quantity of items (currently: {cart.get_item(temp - 1).get_quantity()})')
@@ -154,7 +154,7 @@ def print_menu():
                             print('Enter something.')
                 else:
                     print(f'Updating item {cart.get_item(temp - 1).get_name()}...')
-                    cart.modify_item(Product(cart.get_item(temp - 1).get_name(), temp_quantity, temp_cost, temp_description))
+                    cart.modify_item(temp - 1, Product(cart.get_item(temp - 1).get_name(), temp_quantity, temp_cost, temp_description))
 
         elif user_input == 'i':
             cart.print_descriptions()

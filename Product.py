@@ -1,10 +1,10 @@
 class Product:
     product_name = ''
     product_quantity = 0
-    product_cost = 0.0
+    product_cost = 0
     product_description = ''
 
-    def __init__(self, name = '', quantity = 0, cost = 0.0, description = ''):
+    def __init__(self, name = '', quantity = 0, cost = 0, description = ''):
         self.product_name = name
         self.product_quantity = quantity
         self.product_cost = cost

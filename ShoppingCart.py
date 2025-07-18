@@ -30,12 +30,8 @@ class ShoppingCart:
 	def add_item(self, ItemToPurchase):
 		self.cart_items.append(ItemToPurchase)
 
-	def remove_item(self, ItemToRemove = ''):
-		for pos, item in enumerate(self.cart_items):
-			if item.get_name() == ItemToRemove:
-				del self.cart_items[pos]
-		else:
-			print('Item not found in cart. Nothing removed.')
+	def remove_item(self, ItemToRemove):
+		del self.cart_items[ItemToRemove]
 
 	def modify_item(self, ItemToModify):
 		for pos, item in enumerate(self.cart_items):
@@ -49,6 +45,10 @@ class ShoppingCart:
 				break
 		else:
 			print('Item not found in cart. Nothing modified.')
+
+	def list_items(self):
+		for pos, item in enumerate(self.cart_items):
+			print(f'{pos+1} - {item.get_name()}')
 
 	def get_num_items_in_cart(self):
 		return len(self.cart_items)

@@ -5,6 +5,11 @@ def print_menu():
     user_input = ''
     cart = ShoppingCart()
 
+    name = input('Enter customer\'s name: ')
+    cart.set_name(name)
+    date = input('Enter today\'s date(format = Month Day, Year): ')
+    cart.set_date(date)
+
     while user_input != 'q':
         print('MENU')
         print('a - Add item to cart')
